@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Bienvenido al Sistema de Autenticación Django</h1>
+        
+        {% if user.is_authenticated %}
+            <p class="lead">¡Hola, {{ user.username }}! Has iniciado sesión.</p>
+            <a href="{% url 'profile' %}" class="btn btn-primary btn-lg">Ver Perfil</a>
+        {% else %}
+            <p class="lead">Por favor, inicia sesión o regístrate para acceder a tu perfil.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Iniciar Sesión</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-lg px-4">Registrarse</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

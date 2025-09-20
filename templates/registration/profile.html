@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Perfil de Usuario</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Nombre de Usuario:</th>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>Correo Electrónico:</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre:</th>
+                                <td>{{ user.first_name|default:'No proporcionado' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Apellido:</th>
+                                <td>{{ user.last_name|default:'No proporcionado' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Miembro Desde:</th>
+                                <td>{{ user.date_joined|date:"F d, Y" }}</td>
+                            </tr>
+                            <tr>
+                                <th>Último Inicio de Sesión:</th>
+                                <td>{{ user.last_login|date:"F d, Y H:i" }}</td>
+                            </tr>
+                        </table>
+                        <div class="mt-4">
+                            <a href="{% url 'password_change' %}" class="btn btn-primary me-2">Cambiar Contraseña</a>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary">Volver al Inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
